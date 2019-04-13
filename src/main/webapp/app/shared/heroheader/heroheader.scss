@@ -1,0 +1,32 @@
+/* ==========================================================================
+Main page styles
+========================================================================== */
+
+.background {
+    height: 80vh;
+    /* Center and scale the image nicely */
+    background-size: cover;
+}
+
+.background:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    //background: blue url('https://cdn.pixabay.com/photo/2016/07/10/21/47/cat-1508613__340.jpg') no-repeat center;
+    background: black url('../../../content/images/elinandJeffrey.jpg') no-repeat center;
+
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+h2 {
+    font-size: 3rem;
+}

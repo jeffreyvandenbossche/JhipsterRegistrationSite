@@ -1,0 +1,16 @@
+<div class="flip-clock">
+    <h2>Countdown naar 4 mei 2019:</h2>
+    <div *ngFor="let time of display; let i = index" class="measurements {{time}} flip-clock__piece">
+        <div>
+      <span class="uk-text-primary flip-clock__card card_clock">
+        <span class="card__top"> {{displayNumbers[i]}} </span>
+        <span attr.data-value="{{displayNumbers[i]}}" class="card__bottom"></span>
+        <span attr.data-value="{{displayNumbers2[i]}}" class="card__back">
+          <span attr.data-value="{{displayNumbers[i]}}" class="card__bottom"></span>
+        </span>
+        <span></span>
+      </span>
+            <span class="flip-clock__slot"> {{ time }} </span>
+        </div>
+    </div>
+</div>

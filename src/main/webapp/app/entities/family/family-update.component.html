@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-family-heading" jhiTranslate="weddingsiteApp.family.home.createOrEditLabel">Create or edit a Family</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!family.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="family.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="weddingsiteApp.family.familyName" for="field_familyName">Family Name</label>
+                    <input type="text" class="form-control" name="familyName" id="field_familyName"
+                        [(ngModel)]="family.familyName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="weddingsiteApp.family.streetName" for="field_streetName">Street Name</label>
+                    <input type="text" class="form-control" name="streetName" id="field_streetName"
+                        [(ngModel)]="family.streetName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="weddingsiteApp.family.houseNumber" for="field_houseNumber">House Number</label>
+                    <input type="text" class="form-control" name="houseNumber" id="field_houseNumber"
+                        [(ngModel)]="family.houseNumber" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="weddingsiteApp.family.zipCode" for="field_zipCode">Zip Code</label>
+                    <input type="number" class="form-control" name="zipCode" id="field_zipCode"
+                        [(ngModel)]="family.zipCode" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="weddingsiteApp.family.city" for="field_city">City</label>
+                    <input type="text" class="form-control" name="city" id="field_city"
+                        [(ngModel)]="family.city" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="weddingsiteApp.family.accesscode" for="field_accesscode">Accesscode</label>
+                    <select class="form-control" id="field_accesscode" name="accesscode" [(ngModel)]="family.accesscode">
+                        <option [ngValue]="null"></option>
+                        <option *ngFor="let accesscodeOption of accesscodes; trackBy: trackAccesscodeById"
+                                [ngValue]="accesscodeOption.id === family.accesscode?.id ? family.accesscode : accesscodeOption">{{accesscodeOption.code}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

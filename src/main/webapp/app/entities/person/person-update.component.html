@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-person-heading" jhiTranslate="weddingsiteApp.person.home.createOrEditLabel">Create or edit a Person</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!person.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="person.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="weddingsiteApp.person.firstName" for="field_firstName">First Name</label>
+                    <input type="text" class="form-control" name="firstName" id="field_firstName"
+                        [(ngModel)]="person.firstName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="weddingsiteApp.person.familyName" for="field_familyName">Family Name</label>
+                    <input type="text" class="form-control" name="familyName" id="field_familyName"
+                        [(ngModel)]="person.familyName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_foodRestriction"
+                           jhiTranslate="weddingsiteApp.person.foodRestriction">Food Restriction</label>
+                    <input [(ngModel)]="person.foodRestriction" class="form-control" id="field_foodRestriction"
+                           name="foodRestriction"
+                           type="text"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="weddingsiteApp.person.family" for="field_family">Family</label>
+                    <select class="form-control" id="field_family" name="family" [(ngModel)]="person.family" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="familyOption.id === person.family?.id ? person.family : familyOption" *ngFor="let familyOption of families; trackBy: trackFamilyById">{{familyOption.familyName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="weddingsiteApp.person.partyPart" for="field_partyPart">Party Part</label>
+                    <select class="form-control" id="field_partyPart" multiple name="partyPart" [(ngModel)]="person.partyParts">
+                        <option [ngValue]="getSelected(person.partyParts, partyPartOption)" *ngFor="let partyPartOption of partyparts; trackBy: trackPartyPartById">{{partyPartOption.partName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+{
+    "weddingsiteApp": {
+        "accesscode": {
+            "home": {
+                "title": "Accesscodes",
+                "createLabel": "Maak een nieuwe Accesscode",
+                "createOrEditLabel": "Maak of wijzig een Accesscode"
+            },
+            "created": "A new Accesscode is created with identifier {{ param }}",
+            "updated": "A Accesscode is updated with identifier {{ param }}",
+            "deleted": "A Accesscode is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Bent u zeker dat u Accesscode {{ id }} wilt verwijderen?"
+            },
+            "detail": {
+                "title": "Accesscode"
+            },
+            "code": "Code",
+            "willAttend": "Will Attend",
+            "partyPart": "Party Part"
+        }
+    }
+}

@@ -1,0 +1,93 @@
+<div class="row">
+    <div class="col-md-12">
+        <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" novalidate>
+            <h2>Aanwezig?</h2>
+            <div>
+                <div class="form-check">
+                    <input class="form-check-input" formControlName="willAttend" id="exampleRadios1"
+                           name="willAttend"
+                           type="radio" value="true">
+                    <label class="form-check-label" for="exampleRadios1">
+                        Ja
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input checked class="form-check-input" formControlName="willAttend" id="exampleRadios2"
+                           name="willAttend" type="radio" value="false">
+                    <label class="form-check-label" for="exampleRadios2">
+                        Nee
+                    </label>
+                </div>
+            </div>
+            <div *ngIf="registerForm.controls.willAttend.value ==='true'" formArrayName="persons" id="addNewPerson">
+                <p>Indien "ja", vul de gegevens in van alle aanwezigen (inclusief uzelf) door op "nieuwe persoon
+                    toevoegen" te klikken.</p>
+                <div (click)="addNewPerson()" class="btn-primary btn">
+                    + Nieuwe persoon toevoegen
+                </div>
+                <p *ngIf="getPersons(registerForm).length === 1">
+                    Er is momenteel {{getPersons(registerForm).length}} persoon ingeschreven.
+                </p>
+                <p *ngIf="getPersons(registerForm).length != 1">
+                    Er zijn momenteel {{getPersons(registerForm).length}} personen ingeschreven.
+                </p>
+                <div *ngFor="let person of getPersons(registerForm); let index = index" class="card">
+                    <div class="form-row" formGroupName="{{index}}">
+                        <div class="col-md-12">
+                            <h3 class="card-header">Persoon {{ index + 1 }}:</h3>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="col-md-6 card-div">
+
+                                <label class="" for="inlineFormInputFirstName--{{index}}">Voornaam:</label>
+                                <input [name]="'inlineFormInputFirstName--' + index" [value]="person.value.firstName"
+                                       class="form-control mb-2"
+                                       formControlName="firstName" id="inlineFormInputFirstName--{{index}}" required
+                                       type="text">
+
+                                <label class="" for="inlineFormInputFamilyName--{{index}}">Familienaam:</label>
+                                <input [value]="person.value.familyName" class="form-control mb-2"
+                                       formControlName="familyName" id="inlineFormInputFamilyName--{{index}}" required
+                                       type="text">
+
+                                <label class="" for="inlineFormInputFoodrestriction--{{index}}">Allergieën / Vegetarisch
+                                    / Veganistisch/ Glutenintolerant / ...:</label>
+                                <input [value]="person.value.foodRestrictions" class="form-control mb-2"
+                                       formControlName="foodRestrictions" id="inlineFormInputFoodrestriction--{{index}}"
+                                       type="text">
+                            </div>
+                            <div class="col-md-3 card-div">
+
+                                <div class="form-group test" formArrayName="partyParts">
+                                    <label>Feestonderdelen:</label>
+                                    <div *ngFor="let partyPart of getPartyParts(person); let j = index">
+                                        <div formGroupName="{{ j }}">
+                                            <label>
+                                                <input formControlName="checked" name="PartyParts" type="checkbox"
+                                                       value="{{partyPart.value.id}}">
+                                                {{partyPart.value.name}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 card-div">
+                                <a (click)="removePerson(index)">
+                                    Verwijder persoon
+                                    <fa-icon [icon]="'trash-alt'"></fa-icon>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabled]="!registerForm.valid" class="btn btn-primary mb-2" type="submit">
+                    Versturen
+                    <fa-icon [icon]="'arrow-circle-right'"></fa-icon>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

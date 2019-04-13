@@ -1,0 +1,54 @@
+entity Family {
+	familyName String
+    willAttend Boolean
+    remark String
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Person {
+	firstName String,
+	lastName String
+}
+
+entity PartyPart {
+	partyName String
+}
+
+entity FoodRestriction {
+	restriction String,
+    veggie Boolean
+}
+
+entity DinnerTable {
+	tableName String
+}
+
+entity AccessCode {
+	accessCode String
+}
+
+
+relationship OneToOne {
+	Family{accesscode} to AccessCode
+}
+
+relationship ManyToMany {
+	Person{partyPart(partyName)} to PartyPart{person}
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Family{person} to Person, 
+	Person{foodRestriction} to FoodRestriction,
+    DinnerTable{family} to Family
+}
+
+
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except Employee, Job
+// Set an angular suffix
+angularSuffix * with db

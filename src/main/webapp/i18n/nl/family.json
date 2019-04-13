@@ -1,0 +1,26 @@
+{
+    "weddingsiteApp": {
+        "family": {
+            "home": {
+                "title": "Families",
+                "createLabel": "Maak een nieuwe Family",
+                "createOrEditLabel": "Maak of wijzig een Family"
+            },
+            "created": "A new Family is created with identifier {{ param }}",
+            "updated": "A Family is updated with identifier {{ param }}",
+            "deleted": "A Family is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Bent u zeker dat u Family {{ id }} wilt verwijderen?"
+            },
+            "detail": {
+                "title": "Family"
+            },
+            "familyName": "Family Name",
+            "streetName": "Street Name",
+            "houseNumber": "House Number",
+            "zipCode": "Zip Code",
+            "city": "City",
+            "accesscode": "Accesscode"
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "weddingsiteApp": {
+        "partyPart": {
+            "home": {
+                "title": "Party Parts",
+                "createLabel": "Maak een nieuwe Party Part",
+                "createOrEditLabel": "Maak of wijzig een Party Part"
+            },
+            "created": "A new Party Part is created with identifier {{ param }}",
+            "updated": "A Party Part is updated with identifier {{ param }}",
+            "deleted": "A Party Part is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Bent u zeker dat u Party Part {{ id }} wilt verwijderen?"
+            },
+            "detail": {
+                "title": "Party Part"
+            },
+            "partName": "Part Name",
+            "person": "Person",
+            "accesscode": "Accesscode"
+        }
+    }
+}

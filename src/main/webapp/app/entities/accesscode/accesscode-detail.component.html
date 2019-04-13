@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="accesscode">
+            <h2><span jhiTranslate="weddingsiteApp.accesscode.detail.title">Accesscode</span> {{accesscode.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="weddingsiteApp.accesscode.code">Code</span></dt>
+                <dd>
+                    <span>{{accesscode.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="weddingsiteApp.accesscode.willAttend">Will Attend</span></dt>
+                <dd>
+                    <span>{{accesscode.willAttend}}</span>
+                </dd>
+                <dt><span jhiTranslate="weddingsiteApp.accesscode.partyPart">Party Part</span></dt>
+                <dd>
+                    <span *ngFor="let partyPart of accesscode.partyParts; let last = last">
+                        <a [routerLink]="['/party-part', partyPart?.id, 'view' ]">{{partyPart.partName}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/accesscode', accesscode.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

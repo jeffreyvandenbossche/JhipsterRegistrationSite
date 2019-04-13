@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Accesscode.
+    -->
+    <changeSet id="20181110131211-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="accesscodes_id"
+                                 baseTableName="accesscode_party_part"
+                                 constraintName="fk_accesscode_party_part_accesscodes_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="accesscode"/>
+        <addForeignKeyConstraint baseColumnNames="party_parts_id"
+                                 baseTableName="accesscode_party_part"
+                                 constraintName="fk_accesscode_party_part_party_parts_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="party_part"/>
+        
+    </changeSet>
+</databaseChangeLog>
